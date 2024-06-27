@@ -93,7 +93,7 @@ function sendApplicationData(form_id)
 	$(form_id).append(ref);	
 	ref = $('<input type="hidden" value="' + min_type + '" name="min_type">');	
 	$(form_id).append(ref);	
-	ref = $('<input type="hidden" value="arinkcontact" name="form_kind">');	
+	ref = $('<input type="hidden" value="aqr_m_contact" name="form_kind">');	
 	$(form_id).append(ref);
 
 	if (isRecaptchaInit == true) {
