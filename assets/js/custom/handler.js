@@ -47,47 +47,34 @@ function sendApplicationData(form_id)
 	}
 
 	if (min_type == "") {
-		showDialog("문의 종류를 선택해 주세요.", null);		
-		if ($('div').is('.page-loader')) {
-			$('.page-loader').delay(200).fadeOut(800);
-		}
+		showDialog("문의 종류를 선택해 주세요.", null);
 		return false;
 	}	
 
 	let form_content = $("#form_content").val();
 	if (form_content == "") {
 		showDialog("문의 내용을 입력해 주세요.", null);
-		if ($('div').is('.page-loader')) {
-			$('.page-loader').delay(200).fadeOut(800);
-		}
 		return false;
 	}
 
 	let form_phone = $(form_id).find('input[name="form_phone"]').val();
 	if (form_phone == "") {
 		showDialog("전화번호를 입력해 주세요.", null);
-		if ($('div').is('.page-loader')) {
-			$('.page-loader').delay(200).fadeOut(800);
-		}
 		return false;
 	}
 
 	let form_email = $(form_id).find('input[name="form_email"]').val();
 	if (form_email == "") {
 		showDialog("이메일을 입력해 주세요.", null);
-		if ($('div').is('.page-loader')) {
-			$('.page-loader').delay(200).fadeOut(800);
-		}
 		return false;
 	}
 
 	if ($(form_id).find("#agree_1").length > 0 && $(form_id).find("#agree_1").is(":checked") == false) {
 		showDialog("개인정보 처리방침에 동의해주세요.", null);
-		if ($('div').is('.page-loader')) {
-			$('.page-loader').delay(200).fadeOut(800);
-		}
 		return false;
-	}	
+	}
+
+	$('.page-loader').show();
 	
 	let ref = $('<input type="hidden" value="' + document.referrer + '" name="ref">');	
 	$(form_id).append(ref);	
@@ -164,9 +151,7 @@ function setSubmitHandler(form_p_id) {
 			else {
 			  return;
 			}
-		}
-
-		$('.page-loader').show();
+		}		
 				
 	    sendApplicationData(form_id);	    
 	});
